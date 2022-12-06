@@ -20,6 +20,7 @@ services:
     target: /etc/nginx/nginx.conf
  flask-db:
   build: ./db
+  container_name: mysql
   ports:
   - target: 3306
     published: 3306
