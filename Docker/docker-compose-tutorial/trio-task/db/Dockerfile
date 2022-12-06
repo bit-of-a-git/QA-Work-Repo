@@ -6,6 +6,6 @@ FROM mysql:5.7
 ENV MYSQL_DATABASE=flask-db
 ENV MYSQL_ROOT_PASSWORD=password
 # Add the content of the .sql file to your image
-COPY . docker-entrypoint.initdb.d/
+COPY . docker-entrypoint-initdb.d/
 # All scripts copied to docker-entrypoint-initdb.d/ are automatically
 # executed during container startup
