@@ -14,8 +14,7 @@ pipeline{
                 steps{
                     sh "sudo apt-get update && sudo apt install curl -y"
                     sh "curl https://get.docker.com | sudo bash"
-                    sh "sudo apt install -y jq"
-                    sh "sudo apt-get install docker-compose-plugin"
+                    sh "chmod +x installdockercompose.sh && ./installdockercompose.sh"
                 }
             }
             stage('Deploy Application'){
