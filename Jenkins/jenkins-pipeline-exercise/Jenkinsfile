@@ -12,11 +12,13 @@ pipeline{
                     sh "curl https://get.docker.com | sudo bash"
                     sh "sudo apt install -y jq"
                     sh "sudo apt-get install docker-compose-plugin"
+                    sh "./docker-install.sh"
+                    sh "./docker-compose.sh"
                 }
             }
             stage('Deploy Application'){
                 steps{
-                    sh "sudo docker compose pull && sudo -E DB_PASSWORD=password docker-compose up -d"
+                    sh "sudo docker-compose pull && sudo -E DB_PASSWORD=password docker-compose up -d"
                 }
             }
         }
