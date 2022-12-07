@@ -12,8 +12,10 @@ pipeline{
             }
             stage('Install Docker/Docker Compose'){
                 steps{
-                    sh "chmod +x docker-install.sh && chmod +x docker-compose.sh"
-                    sh "./docker-install.sh && ./docker-compose.sh"
+                    sh "sudo apt-get update && sudo apt install curl -y"
+                    sh "curl https://get.docker.com | sudo bash"
+                    sh "sudo apt install -y jq"
+                    sh "sudo apt-get install docker-compose-plugin"
                 }
             }
             stage('Deploy Application'){
