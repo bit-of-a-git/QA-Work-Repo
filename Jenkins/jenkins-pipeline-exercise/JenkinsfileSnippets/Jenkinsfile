@@ -8,6 +8,7 @@ pipeline{
             stage('Git clone repository'){
                 steps{
                     git 'https://gitlab.com/qacdevops/chaperootodo_client.git'
+                    sh "pwd && ls -al"
                 }
             }
             stage('Install Docker/Docker Compose'){
