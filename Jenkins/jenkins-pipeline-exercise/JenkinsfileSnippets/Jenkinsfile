@@ -7,7 +7,7 @@ pipeline{
         stages{
             stage('Git clone repository'){
                 steps{
-                    git branch: "master", url: "https://gitlab.com/qacdevops/chaperootodo_client.git"
+                    git checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://gitlab.com/qacdevops/chaperootodo_client']]])
                     sh "pwd && ls -al"
                 }
             }
