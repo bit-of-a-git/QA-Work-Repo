@@ -7,7 +7,7 @@ pipeline{
         stages{
             stage('Git clone repository'){
                 steps{
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://gitlab.com/qacdevops/chaperootodo_client']]])
+                    git branch: "master", url: "https://gitlab.com/qacdevops/chaperootodo_client.git"
                     sh "pwd && ls -al"
                 }
             }
@@ -21,7 +21,7 @@ pipeline{
             }
             stage('Deploy Application'){
                 steps{
-                    sh "sudo docker-compose -f chaperootodo_client/docker-compose.yaml pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker-compose -f chaperootodo_client/docker-compose.yaml up -d"
+                    sh "sudo docker-compose -f ./docker-compose.yaml pull && sudo -E DB_PASSWORD=${DB_PASSWORD} docker-compose -f ./docker-compose.yaml up -d"
                 }
             }
             stage('Clean Workspace'){
