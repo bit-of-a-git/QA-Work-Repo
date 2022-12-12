@@ -7,18 +7,22 @@
       name: nginx
       state: present
       update_cache: true
-    # make this fail when the cache update time is greater than 1
-    register: installnginx
-    failed_when: installnginx.cache_update_time > 1
-    ignore_errors: true
+    register: install_nginx
+    # Task 4: make this fail when the cache update time is greater than 1
+    # failed_when: installng_inx.cache_update_time > 1
+    # ignore_errors: true
 
   - name: Copy nginx file over
     copy:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
     register: nginx_config
-    failed_when: nginx_config.diff.before.path == nginx_config.diff.after.path
-    ignore_errors: true
+    # Task 3: Only run if path before and after are the same
+    # when: nginx_config.diff.before.path == nginx_config.diff.after.path
+
+    # Task 2:Fail if before and after are the same
+    # failed_when: nginx_config.diff.before.path == nginx_config.diff.after.path
+    # ignore_errors: true
 
   - name: Restart nginx if needed
     service:
@@ -26,6 +30,7 @@
       state: restarted
     when: nginx_config.changed == true
 
+  # Task 1:
   - name: "Print information from 'Copy nginx file over'"
     debug:
       msg: "{{ nginx_config }}"
