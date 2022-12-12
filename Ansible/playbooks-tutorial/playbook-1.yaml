@@ -10,6 +10,7 @@
     # make this fail when the cache update time is greater than 1
     register: installnginx
     failed_when: installnginx.cache_update_time > 1
+    ignore_errors: true
 
   - name: Copy nginx file over
     copy:
