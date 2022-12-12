@@ -7,3 +7,8 @@
       name: nginx
       state: absent
       update_cache: true
+      
+  - name: "Stop Nginx Services"
+    service:
+      name: nginx
+      state: stopped
