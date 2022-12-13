@@ -3,8 +3,8 @@
   tasks:
   - name: Get IP
     shell: dig +short myip.opendns.com @resolver1.opendns.com
-    register: public-host-ip
+    register: publichostip
   - name: Create a file with the IP
     copy:
       path: /home/ubuntu/public-ip.txt
-      content: "{{public-host-ip}}"
+      content: "{{publichostip}}"
