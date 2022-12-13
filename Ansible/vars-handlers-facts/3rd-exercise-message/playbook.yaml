@@ -4,4 +4,4 @@
   - name: Print Message
     debug:
       msg: System {{ inventory_hostname }} is running {{ ansible_distribution }}
-    when: ansible_distribution] == "Ubuntu"
+    when: ansible_distribution == "Ubuntu"
