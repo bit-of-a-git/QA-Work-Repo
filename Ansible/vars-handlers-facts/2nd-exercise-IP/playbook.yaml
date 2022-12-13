@@ -1,10 +1,9 @@
 - hosts: all
   become: true
+  vars:
+    host_ip: "{{ansible_default_ipv4.address}}"
   tasks:
-  - name: Get IP
-    shell: dig +short myip.opendns.com @resolver1.opendns.com
-    register: publichostip
-  - name: Create a file with the IP
+  - name: Copy host IP to file
     copy:
+      content: "{{host_ip}}"
       dest: /home/ubuntu/public-ip.txt
-      content: "{{publichostip.stdout}}"
