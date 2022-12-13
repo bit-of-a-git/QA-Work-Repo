@@ -11,8 +11,20 @@
         - lsb-release
       state: latest
       update_cache: true
-
   - name: "Add GPG key"
     apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
       state: present
+  - name: "Add Docker repository"
+    apt_repository:
+      repo: https://download.docker.com/linux/ubuntu
+      state: present
+  - name: "Update repository and install Docker"
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-compose-plugin
+      state: latest
+      update_cache: true
