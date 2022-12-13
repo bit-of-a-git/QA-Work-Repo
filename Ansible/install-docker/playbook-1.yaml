@@ -2,6 +2,10 @@
   connection: local
   become: true
   tasks:
+  - name: "Add Docker repository"
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu
+      state: present
   - name: "Install aptitude"
     apt:
       name: aptitude
