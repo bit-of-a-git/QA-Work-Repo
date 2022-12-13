@@ -7,4 +7,4 @@
   - name: Create a file with the IP
     copy:
       dest: /home/ubuntu/public-ip.txt
-      content: "{{publichostip}}"
+      content: "{{publichostip.stdout}}"
