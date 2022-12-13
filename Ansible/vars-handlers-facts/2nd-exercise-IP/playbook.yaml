@@ -6,5 +6,5 @@
     register: publichostip
   - name: Create a file with the IP
     copy:
-      path: /home/ubuntu/public-ip.txt
+      dest: /home/ubuntu/public-ip.txt
       content: "{{publichostip}}"
