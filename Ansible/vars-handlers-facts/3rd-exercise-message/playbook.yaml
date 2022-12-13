@@ -2,6 +2,5 @@
   become: true
   tasks:
   - name: Print Message
-    debug:
-      msg: System {{ inventory_hostname }} is running {{ ansible_distribution }}
-    when: ansible_distribution == "Microsoft"
+    shell: "System {{ inventory_hostname }} is running {{ ansible_distribution }}"
+    when: ansible_distribution == "Ubuntu"
