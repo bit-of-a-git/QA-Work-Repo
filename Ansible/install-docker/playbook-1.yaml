@@ -5,11 +5,11 @@
   - name: "Update Apt, install Prerequisites"
     apt:
       name:
+        - apt-transport-https
         - ca-certificates
         - curl
         - gnupg
         - lsb-release
-        - apt-transport-https
         - software-properties-common
         - python3-pip
         - virtualenv
