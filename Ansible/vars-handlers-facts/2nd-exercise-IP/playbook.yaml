@@ -1,6 +1,10 @@
 - hosts: all
   become: true
   tasks:
-  - name: Print all available facts
-    ansible.builtin.debug:
-      var: ansible_facts
+  - name: Get IP
+    shell: dig +short myip.opendns.com @resolver1.opendns.com
+    register: public-host-ip
+  - name: Create a file with the IP
+    copy:
+      path: /home/ubuntu/public-ip.txt
+      content: "{{public-host-ip}}"
