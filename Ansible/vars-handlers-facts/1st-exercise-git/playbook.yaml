@@ -4,5 +4,6 @@
   - name: Clone Git Repo
     git:
       repo: https://github.com/bit-of-a-git/QA-Work-Repo.git
-      dest: ~/gitrepos
+      dest: /home/ubuntu/repos
       clone: yes
+      update: yes
