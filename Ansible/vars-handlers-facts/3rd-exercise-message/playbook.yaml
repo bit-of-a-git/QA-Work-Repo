@@ -2,5 +2,5 @@
   become: true
   tasks:
   - name: Print Message
-    shell: "System {{ inventory_hostname }} is running {{ ansible_distribution }}"
+    shell: "echo 'System {{ inventory_hostname }} is running {{ ansible_distribution }}'"
     when: ansible_distribution == "Ubuntu"
